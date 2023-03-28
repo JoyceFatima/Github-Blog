@@ -6,11 +6,10 @@ import { LayoutHome } from './layouts/Home'
 import theme from './styles/themes/default'
 
 export function App() {
-
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-        <LayoutHome />
+      <LayoutHome />
     </ThemeProvider>
   )
 }

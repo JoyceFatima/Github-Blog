@@ -1,10 +1,15 @@
-import { Header } from '../../components/Header';
-import { SearchInput } from './components/SearchInput';
+import { SearchInput } from './components/SearchInput'
 
-import { BlogContainer, Links, NameAndLink, ProfileCard, ProfileImg } from './styles';
+import {
+  BlogContainer,
+  Links,
+  NameAndLink,
+  ProfileCard,
+  ProfileImg,
+} from './styles'
 
 export function Blogs() {
-  return(
+  return (
     <BlogContainer>
       <ProfileCard>
         <ProfileImg>
@@ -13,7 +18,9 @@ export function Blogs() {
 
         <NameAndLink>
           <h2>Cameron Williamson</h2>
-          <a rel="stylesheet" href="">GITHUB</a>
+          <a rel="stylesheet" href="">
+            GITHUB
+          </a>
         </NameAndLink>
 
         <span>
@@ -21,7 +28,7 @@ export function Blogs() {
           viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat
           pulvinar vel mass.
         </span>
-      
+
         <Links>
           <li>
             <a href="">cameronwll</a>
@@ -38,4 +45,4 @@ export function Blogs() {
       <SearchInput />
     </BlogContainer>
   )
-} 
+}

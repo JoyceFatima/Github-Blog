@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
   *, *::before, *::after {
@@ -25,7 +25,7 @@ html, body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  background-color: ${props => props.theme.base_background};
+  background-color: ${(props) => props.theme.base_background};
 }
 /*
   6. Improve media defaults
@@ -44,7 +44,7 @@ input, button, textarea, select {
   8. Avoid text overflows
 */
 span, p, h1, h2, h3, h4, h5, h6 {
-  color: ${props => props.theme.base_title};
+  color: ${(props) => props.theme.base_title};
   overflow-wrap: break-word;
 }
 /*
@@ -53,4 +53,4 @@ span, p, h1, h2, h3, h4, h5, h6 {
 #root, #__next {
   isolation: isolate;
 }
-`;
+`
