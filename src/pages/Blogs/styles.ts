@@ -1,25 +1,27 @@
 import styled from 'styled-components'
 
-export const BlogContainer = styled.div`
+export const Container = styled.div``
+
+export const CardContainer = styled.div`
   width: 100%;
-  height: 100%;
-  max-width: 1120px;
 
-  margin: 0 auto;
-  background-color: ${(props) => props.theme.base_profile};
-  border-radius: 10px;
-`
+  position: relative;
+  top: -90px; /* Posicione o card 20px acima do elemento pai */
 
-export const ProfileCard = styled.div`
   padding: 2rem;
+  border-radius: 10px;
+  background-color: ${(props) => props.theme.base_profile};
 `
 
-export const ProfileImg = styled.div`x`
-
-export const NameAndLink = styled.div`
+export const Nagivation = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.7rem;
+  padding-bottom: 1rem;
+  a {
+    display: flex;
+    gap: 0.5rem;
+    color: ${(props) => props.theme.blue};
+  }
 `
 
 export const Links = styled.ul`
@@ -27,4 +29,26 @@ export const Links = styled.ul`
 
   display: flex;
   gap: 2rem;
+
+  a {
+    display: flex;
+    gap: 0.5rem;
+    color: ${(props) => props.theme.base_subtitle};
+  }
+`
+
+export const Description = styled.div`
+  margin: 0 3rem;
+  padding: 3rem 0;
+
+  margin-top: -90px; /* igual à altura do card */
+
+  p {
+    padding-bottom: 2rem;
+  }
+
+  a {
+    text-decoration: underline;
+    color: ${(props) => props.theme.blue};
+  }
 `

@@ -1,48 +1,104 @@
-import { SearchInput } from './components/SearchInput'
+import { useContext, useEffect, useRef } from 'react'
+import { GitHubContext } from '../../context/GitHubContext'
+
+import { marked } from 'marked'
+
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+
+import { Link, useParams } from 'react-router-dom'
 
 import {
-  BlogContainer,
+  CardContainer,
+  Container,
+  Description,
   Links,
-  NameAndLink,
-  ProfileCard,
-  ProfileImg,
+  Nagivation,
 } from './styles'
 
+import VectorBackThumb from '../../assets/images/VectorBack.svg'
+import LinkThumb from '../../assets/images/Link.svg'
+import GithubThumb from '../../assets/images/Github.svg'
+import CalenderThumb from '../../assets/images/Calender.svg'
+import CommentsThumb from '../../assets/images/Comments.svg'
+
+import { Loading } from '../../components/Loading'
+
+interface RouteParams {
+  [key: string]: string | undefined
+  repo: string
+  issueNum: string
+}
+
 export function Blogs() {
+  const { repo, issueNum } = useParams<RouteParams>()
+  const { issue, fetchIssue } = useContext(GitHubContext)
+
+  const isFetched = useRef(false)
+
+  useEffect(() => {
+    if (repo && issueNum && !isFetched.current) {
+      fetchIssue(repo, parseInt(issueNum))
+      isFetched.current = true
+    }
+  }, [fetchIssue, issueNum, repo])
+
+  if (!issue) {
+    return <Loading />
+  }
+
+  const formattedDate = formatDistanceToNow(new Date(issue.created_at), {
+    locale: ptBR,
+    addSuffix: true,
+  })
+
+  const issueBody = issue.body
+  const formattedIssueBody = marked(issueBody, {
+    mangle: false,
+    headerIds: false,
+  })
+
   return (
-    <BlogContainer>
-      <ProfileCard>
-        <ProfileImg>
-          <img src="" alt="Profile" />
-        </ProfileImg>
+    <Container>
+      <CardContainer>
+        <Nagivation>
+          <Link to={'/'}>
+            <img src={VectorBackThumb} alt="To back" />
+            VOLTAR
+          </Link>
+          <Link to={issue.html_url}>
+            VER NO GITHUB
+            <img src={LinkThumb} alt="Link" />
+          </Link>
+        </Nagivation>
 
-        <NameAndLink>
-          <h2>Cameron Williamson</h2>
-          <a rel="stylesheet" href="">
-            GITHUB
-          </a>
-        </NameAndLink>
-
-        <span>
-          Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-          viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat
-          pulvinar vel mass.
-        </span>
+        <h2>{issue.title}</h2>
 
         <Links>
           <li>
-            <a href="">cameronwll</a>
+            <a href={issue.user?.html_url}>
+              <img src={GithubThumb} alt="Profile" />
+              <span>{issue.user?.login}</span>
+            </a>
           </li>
           <li>
-            <a href="">Rocketseat</a>
+            <a href="">
+              <img src={CalenderThumb} alt="Profile" />
+              <span>{formattedDate}</span>
+            </a>
           </li>
           <li>
-            <a href="">seguidores</a>
+            <a href="">
+              <img src={CommentsThumb} alt="Profile" />
+              <span>{issue.comments} comentários</span>
+            </a>
           </li>
         </Links>
-      </ProfileCard>
+      </CardContainer>
 
-      <SearchInput />
-    </BlogContainer>
+      <Description>
+        <div dangerouslySetInnerHTML={{ __html: formattedIssueBody }}></div>
+      </Description>
+    </Container>
   )
 }

@@ -26,6 +26,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   background-color: ${(props) => props.theme.base_background};
+  font-family: "Nunito", sans-serif;
 }
 /*
   6. Improve media defaults
@@ -47,6 +48,12 @@ span, p, h1, h2, h3, h4, h5, h6 {
   color: ${(props) => props.theme.base_title};
   overflow-wrap: break-word;
 }
+
+ul, li, a {
+  list-style: none;
+  text-decoration: none;
+}
+
 /*
   9. Create a root stacking context
 */
