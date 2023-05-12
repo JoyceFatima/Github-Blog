@@ -2,7 +2,7 @@
   "name": "github-blog",
   "private": true,
   "version": "0.0.0",
-  "homepage": "Github-Blog/",
+  "homepage": "https://joycefatima.github.io/Github-Blog/",
   "type": "module",
   "scripts": {
     "dev": "vite",
