@@ -16,6 +16,7 @@ import {
   ProfileCard,
   ProfileImg,
   SearchForm,
+  Title,
 } from './styles'
 
 import CompanyThumb from '../../assets/images/Company.svg'
@@ -36,6 +37,8 @@ export function Home() {
   )
 
   const isFilteredIssuesEmpty = filteredIssues?.length === 0
+
+  const isIssuesLength = issues ? issues.length : 0
 
   return (
     <BlogContainer>
@@ -87,8 +90,8 @@ export function Home() {
         <FormAndCards>
           <SearchForm>
             <InfoPublis>
-              <span>Publicações</span>
-              <span>{issues ? issues.length : 0} publicações</span>
+              <Title>Publicações</Title>
+              <span>{isIssuesLength} publicações</span>
             </InfoPublis>
 
             <SearchInput onSearch={handleSearch} />

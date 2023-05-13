@@ -80,3 +80,6 @@ export const InfoPublis = styled.div`
   text-align: center;
   justify-content: space-between;
 `
+export const Title = styled.h3`
+  color: ${(props) => props.theme.base_subtitle};
+`

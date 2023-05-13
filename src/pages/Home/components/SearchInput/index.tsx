@@ -16,6 +16,10 @@ export function SearchInput({ onSearch }: SearchProps) {
   )
 
   return (
-    <InputComponent type="text" placeholder="Buscar" onChange={handleSearch} />
+    <InputComponent
+      type="text"
+      placeholder="Buscar counteúdo"
+      onChange={handleSearch}
+    />
   )
 }

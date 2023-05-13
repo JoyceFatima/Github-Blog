@@ -7,6 +7,15 @@ export const Card = styled.div`
   padding: 2rem;
   border-radius: 10px;
   background: ${(props) => props.theme.base_post};
+  min-height: 15rem;
+  max-height: 15rem;
+  border: 2px solid transparent;
+
+  &:hover {
+    cursor: pointer;
+    border: 2px solid ${(props) => props.theme.base_border};
+    transition: border 0.2s;
+  }
 `
 
 export const Title = styled.div`
@@ -27,13 +36,10 @@ export const Title = styled.div`
   }
 `
 
-export const DescriptionContainer = styled.div`
-  min-height: 10rem;
-  max-height: 10rem;
-`
+export const DescriptionContainer = styled.div``
 
 export const Description = styled.div`
-  max-height: 9rem;
+  max-height: 7.5rem;
   max-width: 100%;
 
   overflow: hidden;

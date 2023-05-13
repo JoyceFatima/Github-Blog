@@ -15,7 +15,7 @@ export const InputComponent = styled.input`
   color: ${(props) => props.theme.base_label};
 
   &&:focus {
-    border: 1px solid ${(props) => props.theme.blue};
+    border: 2px solid ${(props) => props.theme.blue};
     transition: border 0.2s;
   }
 `
